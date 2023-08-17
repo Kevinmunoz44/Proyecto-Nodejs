@@ -3,15 +3,16 @@ const { tracksModel } = require('../models');
 const { handleHttpError } = require('../utils/handleError');
 
 /**
- * Obtner lista de la base de datos
+ * Obtener lista de la base de datos
  * @param {*} req 
  * @param {*} res 
  */
 
 const getItems = async (req, res) => {
     try {
+        const user = req.user;
         const data = await tracksModel.find({});
-        res.send({ data })
+        res.send({ data, user });
     } catch (e) {
         handleHttpError(res, 'ERROR_GET_ITEMS');
     }
@@ -22,12 +23,12 @@ const getItems = async (req, res) => {
  * @param {*} req 
  * @param {*} res 
  */
-const getItem = async (req, res) => { 
+const getItem = async (req, res) => {
     try {
         req = matchedData(req);
         const {id} = req;
         const data = await tracksModel.findById(id);
-        res.send({ data })
+        res.send({ data });
     } catch (e) {
         handleHttpError(res, 'ERROR_GET_ITEM')
     }

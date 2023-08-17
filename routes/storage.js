@@ -5,7 +5,7 @@ const {validatorGetItem} = require('../validators/storage')
 const {getItems, getItem, createItem, updateitem, deleteItems} = require('../controller/storage');
 
 /**
- * Obtener detalles lista items
+ * Lista de items
  */
 router.get('/', getItems);
 
