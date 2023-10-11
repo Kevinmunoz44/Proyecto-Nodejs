@@ -1,54 +1,97 @@
-const {check} = require('express-validator');
-const validateResults = require('../utils/handleValidator')
+const { check } = require("express-validator");
+const validateResults = require("../utils/handleValidator")
 
 const validatorCreateItem = [
-    check('name')
+    check("name")
     .exists()
     .notEmpty(),
-    check('album')
+    check("album")
     .exists()
     .notEmpty(),
-    check('cover')
+    check("cover")
     .exists()
     .notEmpty(),
-    check('artist')
+    check("artist")
     .exists()
     .notEmpty(),
-    check('artist.name')
+    check("artist.name")
     .exists()
     .notEmpty(),
-    check('artist.nickname')
+    check("artist.nickname")
     .exists()
     .notEmpty(),
-    check('artist.nationality')
+    check("artist.nationality")
     .exists()
     .notEmpty(),
-    check('duration')
+    check("duration")
     .exists()
     .notEmpty(),
-    check('duration.start')
+    check("duration.start")
     .exists()
     .notEmpty(),
-    check('duration.end')
+    check("duration.end")
     .exists()
     .notEmpty(),
-    check('mediaId')
+    check("mediaId")
     .exists()
-    .notEmpty()
-    .isMongoId(),
+    .notEmpty(),
     (req, res, next) => {
-       return validateResults(req, res, next)
+        return validateResults(req, res, next)
     }
 ];
+
 
 const validatorGetItem = [
-    check('id')
+    check("id")
     .exists()
-    .notEmpty()
-    .isMongoId(),
+    .notEmpty(),
     (req, res, next) => {
-       return validateResults(req, res, next)
+        return validateResults(req, res, next)
     }
 ];
 
-module.exports = {validatorCreateItem, validatorGetItem};
+const validatorUpdateItem = [
+    check("id")
+    .exists()
+    .notEmpty()
+    .isMongoId(),
+    check("name")
+    .exists()
+    .notEmpty(),
+    check("album")
+    .exists()
+    .notEmpty(),
+    check("cover")
+    .exists()
+    .notEmpty(),
+    check("artist")
+    .exists()
+    .notEmpty(),
+    check("artist.name")
+    .exists()
+    .notEmpty(),
+    check("artist.nickname")
+    .exists()
+    .notEmpty(),
+    check("artist.nationality")
+    .exists()
+    .notEmpty(),
+    check("duration")
+    .exists()
+    .notEmpty(),
+    check("duration.start")
+    .exists()
+    .notEmpty(),
+    check("duration.end")
+    .exists()
+    .notEmpty(),
+    check("mediaId")
+    .exists()
+    .notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+];
+
+
+module.exports = { validatorCreateItem, validatorGetItem, validatorUpdateItem };
