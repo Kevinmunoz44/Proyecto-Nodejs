@@ -14,9 +14,6 @@ const swaggerDefinition = {
     {
       url: "http://localhost:3001/api",
     },
-    {
-      url: "https://afternoon-journey-32165.herokuapp.com/api",
-    },
   ],
   components: {
     securitySchemes:{
